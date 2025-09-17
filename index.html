@@ -1,161 +1,314 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Advances & Challenges in AI‑Driven Automation and Robotic System Integration with Digital Twins — ICRA 2026 Workshop</title>
-  <meta name="description" content="ICRA 2026 Half‑day Workshop on AI‑driven automation and robotic system integration with Digital Twins: standards, interoperability, case studies, and best practices." />
-  <meta property="og:title" content="ICRA 2026 Workshop — AI‑Driven Automation & Digital Twins" />
-  <meta property="og:description" content="Standards, interoperability, case studies, and best practices for AI‑driven automation in robotics." />
-  <meta property="og:image" content="/img/social-card.png" />
-  <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🤖</text></svg>">
-  <style>
-    :root{
-      --bg:#0b0d10; --panel:#12161b; --text:#e6e8eb; --muted:#9aa3ab; --brand:#60a5fa; --accent:#22d3ee; --ok:#34d399; --warn:#f59e0b; --danger:#ef4444; --line:#1f2937; --radius:16px;
-      --shadow:0 10px 30px rgba(0,0,0,.25);
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0; font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu; background:var(--bg); color:var(--text)}
-    header{position:sticky; top:0; z-index:20; background:rgba(11,13,16,.7); backdrop-filter:saturate(180%) blur(12px); border-bottom:1px solid var(--line)}
-    .container{max-width:1100px; margin:0 auto; padding:0 20px}
-    nav{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px 0}
-    .brand{font-weight:700; letter-spacing:.3px}
-    .brand small{display:block; color:var(--muted); font-weight:500}
-    .navlinks a{color:var(--muted); text-decoration:none; margin-left:18px}
-    .navlinks a:hover{color:var(--text)}
-    .btn{display:inline-block; padding:10px 16px; border-radius:999px; text-decoration:none; border:1px solid var(--line); color:var(--text)}
-    .btn.primary{border-color:transparent; background:linear-gradient(135deg,var(--brand),var(--accent)); color:#071018; font-weight:700}
-    .btn.ghost{background:transparent}
+<!DOCTYPE HTML>
+<!-- Massively by HTML5 UP — tailored single‑page layout for ICRA 2026 workshop -->
+<html>
+  <head>
+    <title>ICRA 2026 Workshop — AI‑Driven Automation & Digital Twins</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <link rel="icon" href="img/logo.png" type="image/png" />
+    <!-- Typography: clean, academic (Inter + Lora) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+      /* —— Harmonized typography & spacing; better title composition —— */
+      :root{
+        --ink:#0e1726; --muted:#5b6675; --line:#e6ebf2; --link:#0b65c2;
+        --maxw:980px; --r:12px;
+        --fs-base:clamp(14px, 1vw + 10px, 15.5px);
+        --fs-h1:clamp(24px, 2.2vw + 12px, 32px);
+        --fs-h2:clamp(18px, 1.1vw + 10px, 21px);
+        --space-1:8px; --space-2:12px; --space-3:18px; --space-4:26px;
+      }
+      *{box-sizing:border-box}
+      html{text-size-adjust:100%}
+      body{margin:0; font:var(--fs-base)/1.7 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Arial, sans-serif; color:var(--ink); background:#fff; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; text-rendering:optimizeLegibility}
+      h1,h2,h3{font-family:'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Arial, sans-serif; letter-spacing:-0.01em; margin:0 0 var(--space-2)}
+      h1{font-weight:800; font-size:var(--fs-h1); line-height:1.18; text-wrap:balance}
+      h2{font-weight:700; font-size:var(--fs-h2)}
+      p{margin:0 0 var(--space-2); max-width:70ch}
+      a{color:var(--link); text-decoration:none} a:hover{text-decoration:underline}
 
-    .hero{padding:64px 0 32px; border-bottom:1px solid var(--line); background:radial-gradient(1000px 400px at 50% -10%, rgba(96,165,250,.2), transparent)}
-    h1{font-size:clamp(28px,3.5vw,42px); line-height:1.15; margin:0 0 12px}
-    h2{font-size:clamp(22px,2.2vw,30px); margin:28px 0 10px}
-    h3{font-size:clamp(18px,1.7vw,22px); margin:22px 0 10px}
-    p{margin:10px 0}
-    .muted{color:var(--muted)}
-    .grid{display:grid; gap:18px}
-    @media (min-width:820px){.grid.col-2{grid-template-columns:1fr 1fr}.grid.col-3{grid-template-columns:repeat(3,1fr)}}
-    .card{background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
-    .kpis{display:flex; flex-wrap:wrap; gap:10px}
-    .pill{border:1px solid var(--line); padding:6px 10px; border-radius:999px; color:var(--muted)}
-    ul{margin:10px 0 0 18px}
-    .footer{border-top:1px solid var(--line); margin-top:40px; padding:24px 0; color:var(--muted)}
-    .lead{font-size:18px}
-    .two{display:grid; gap:14px}
-    @media(min-width:900px){.two{grid-template-columns: 1.1fr .9fr}}
-    .tag{display:inline-block; font-size:12px; padding:3px 8px; border:1px solid var(--line); border-radius:999px; color:var(--muted);}
-    .speaker{display:grid; grid-template-columns:64px 1fr; gap:12px; align-items:center}
-    .speaker img{width:64px; height:64px; object-fit:cover; border-radius:50%; border:1px solid var(--line)}
-    .mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size:12px}
-    .list-tight li{margin:6px 0}
-    .toc{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px}
-    .toc a{font-size:14px; color:var(--muted); text-decoration:none; border:1px solid var(--line); border-radius:999px; padding:6px 10px}
-    .toc a:hover{color:var(--text)}
-  </style>
-</head>
-<body>
-  <header>
-    <div class="container">
-      <nav>
-        <div class="brand">
-          <img src="/img/logos/icra-2026.svg" alt="ICRA 2026" style="height:28px;width:auto;display:block" onerror="this.style.display='none'">
-          <div>
-            <div>ICRA 2026 Workshop</div>
-            <span class="sub">AI‑Driven Automation & Digital Twins</span>
-          </div>
-        </div>
-        <div class="navlinks">
-          <a href="#about">About</a>
-          <a href="#speakers">Speakers</a>
-          <a href="#topics">Topics</a>
-          <a href="#program">Program</a>
-          <a href="#cfp">CFP</a>
-          <a href="#contact">Contact</a>
-        </div>
-      </nav>
-    </div>
-  </header>
+      /* Hero — brighter, with kicker + balanced title lines */
+      #intro{position:relative; min-height:56vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; background-image:url('img/hero.jpg'); background-size:cover; background-position:center; padding:40px 16px}
+      #intro:before{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(255,255,255,.5), rgba(0,0,0,.10))}
+      #intro .inner{position:relative; z-index:1; max-width:var(--maxw)}
+      .kicker{display:inline-block; font-weight:700; letter-spacing:.08em; text-transform:uppercase; font-size:12px; color:#08366a; background:#ffffffd9; border:1px solid #dbe8ff; padding:4px 10px; border-radius:999px; margin-bottom:var(--space-2)}
+      #intro h1{max-width:28ch; margin-inline:auto}
+      #intro p{max-width:62ch; margin-inline:auto}
 
-  <section class="hero" style="position:relative">
-    <div class="container two">
-      <div>
-        <h1>Advances & Challenges in AI‑Driven Automation and Robotic System Integration with Digital Twins</h1>
-        <p class="lead">Half‑day workshop at <strong>ICRA 2026</strong> (Vienna). We focus on practical, reproducible integration methods that make AI‑enhanced robots work reliably with tools, sensors, and automated systems—at scale.</p>
-        <div class="kpis" style="margin:14px 0 18px">
-          <span class="pill">Half‑day</span>
-          <span class="pill">Vienna · <span class="mono">Date TBA</span></span>
-          <span class="pill">In‑person</span>
+      /* Header & nav — minimal */
+      #header .logo{font-weight:700}
+      #nav .links{justify-content:center; gap:18px}
+      #nav .icons{display:none}
+
+      /* Main width & spacing */
+      #main{max-width:var(--maxw); margin:0 auto; padding:0 16px}
+      #main > *{margin-top:var(--space-4)}
+      //* Overview alignment: first paragraph justified, rest left-aligned */
+      /* Overview: first paragraph justified, everything else left-aligned */
+      #overview p:first-of-type {
+        text-align: justify;
+        text-justify: inter-word;
+        hyphens: auto;
+      }
+      #overview p:not(:first-of-type),
+      #overview header.major,
+      #overview .card,
+      #overview ul { text-align: left; }
+
+      /* Ensure list is not centered by theme */
+      #overview ul { margin-left: 1.25rem; list-style-position: outside; }
+
+      /* Overview alignment rules */
+      #overview p:first-of-type {
+        text-align: justify !important;
+        text-justify: inter-word;
+        hyphens: auto;
+      }
+      #overview p:not(:first-of-type),
+      #overview header.major,
+      #overview .card,
+      #overview ul {
+        text-align: left !important;
+      }
+      #overview ul {
+        margin-left: 1.25rem;
+        list-style-position: outside;
+      }
+
+
+
+      /* Program — vertical schedule with tags; balanced text size */
+      .schedule{border:1px solid var(--line); border-radius:var(--r); background:#fff; overflow:hidden}
+      .slot{display:grid; grid-template-columns:92px 1fr; border-top:1px solid var(--line)}
+      .slot:first-child{border-top:0}
+      .slot .t{padding:9px 10px; font-weight:700; color:#0b3a75; background:#f7f9fc; white-space:nowrap}
+      .slot .c{padding:9px 10px}
+      .badge{display:inline-block; padding:2px 8px; border-radius:999px; font-size:11.5px; margin-right:6px; border:1px solid #d8e7ff; background:#f3f8ff; color:#0b3a75}
+      .badge.keynote{border-color:#f8cfe1; background:#fff4f8; color:#8b1345}
+      .badge.invited{border-color:#f6e3a1; background:#fffae9; color:#7a4b00}
+      .badge.industry{border-color:#bfeadf; background:#f1fdf8; color:#0e5f49}
+      .badge.panel{border-color:#d7dbff; background:#f3f5ff; color:#2e36a3}
+      .badge.posters{border-color:#e7eaee; background:#fbfcfd; color:#374151}
+
+      /* People — media cards with consistent image column and rhythm */
+      .people-list{display:grid; gap:var(--space-2)}
+      .person{display:grid; grid-template-columns:120px 1fr; gap:var(--space-2); align-items:center; border:1px solid var(--line); border-radius:var(--r); background:#fff; padding:var(--space-2)}
+      .person img{width:120px; height:120px; object-fit:cover; border-radius:10px}
+      .person .name{font-weight:700; font-size:15.5px; margin:0 0 4px}
+      .person .role{display:inline-block; padding:2px 8px; border-radius:999px; font-size:11.5px; margin-left:6px; border:1px solid #cfe2ff; background:#eff6ff; color:#0b3a75}
+      .person .affil{color:var(--muted); font-size:13.5px}
+      @media (max-width:560px){
+        .person{grid-template-columns:1fr; text-align:center}
+        .person img{justify-self:center}
+        .person .role{margin-left:0}
+      }
+
+      /* Footer */
+      #footer{border-top:1px solid var(--line)}
+    </style>
+  </head>
+  <body class="is-loading">
+
+    <!-- Wrapper -->
+    <div id="wrapper" class="fade-in">
+
+      <!-- Intro (Hero) -->
+      <div id="intro">
+        <div class="inner">
+          <span class="kicker">ICRA 2026 Workshop · Vienna</span>
+          <h1>AI‑Driven Automation & Robotic System Integration with Digital Twins</h1>
+          <p>Half‑day workshop at <a href="https://2026.ieee-icra.org/" target="_blank" rel="noopener"><strong>IEEE ICRA 2026</strong></a>. Date TBA according to the official schedule.</p>
+          <ul class="actions">
+            <li><a href="#header" class="button icon solo fa-arrow-down scrolly">Continue</a></li>
+          </ul>
         </div>
-        <div class="toc">
-          <a href="#about">About</a>
-          <a href="#speakers">Speakers</a>
-          <a href="#topics">Topics</a>
-          <a href="#program">Program</a>
-          <a href="#cfp">Call for Participation</a>
-        </div>
-        <p style="margin-top:14px">
-          <a class="btn primary" href="#cfp">Submit / Participate</a>
-          <a class="btn ghost" href="#contact" style="margin-left:8px">Contact organizers</a>
-        </p>
       </div>
-      <aside class="card" style="background:var(--panel2)">
-        <h3>Organizers</h3>
-        <p class="muted" style="margin-top:-6px">Corresponding organizer in bold.</p>
-        <div class="grid" style="grid-template-columns:repeat(1, minmax(0,1fr)); gap:12px">
-          <div class="speaker" style="grid-template-columns:56px 1fr">
-            <img src="/img/organizers/angela.jpg" alt="Angela Faragasso" onerror="this.src='/img/speakers/placeholder.jpg'" />
-            <div>
-              <strong>Angela Faragasso</strong><br>
-              <span class="muted">Finger Vision, Japan</span><br>
-              <a href="mailto:angela.faragasso@fingervision.biz">✉ angela.faragasso@fingervision.biz</a>
-            </div>
-          </div>
-          <div class="speaker" style="grid-template-columns:56px 1fr">
-            <img src="/img/organizers/birgit.jpg" alt="Birgit Vogel‑Heuser" onerror="this.src='/img/speakers/placeholder.jpg'" />
-            <div>
-              Birgit Vogel‑Heuser<br>
-              <span class="muted">Technical University of Munich, Germany</span><br>
-              <a href="mailto:vogel-heuser@tum.de">✉ vogel-heuser@tum.de</a>
-            </div>
-          </div>
-          <div class="speaker" style="grid-template-columns:56px 1fr">
-            <img src="/img/organizers/fanti.jpg" alt="Maria Pia Fanti" onerror="this.src='/img/speakers/placeholder.jpg'" />
-            <div>
-              Maria Pia Fanti<br>
-              <span class="muted">Politecnico di Bari, Italy</span><br>
-              <a href="mailto:mariapia.fanti@poliba.it">✉ mariapia.fanti@poliba.it</a>
-            </div>
-          </div>
-        </div>
-        <p class="muted" style="margin-top:8px">Website: <span class="mono">TBD</span></p>
-      </aside>
-    </div>
-    <img src="/img/logos/ieee-ras.svg" alt="IEEE RAS" style="position:absolute; right:20px; bottom:10px; height:30px; opacity:.6" onerror="this.style.display='none'">
-  </section>
 
-  <main class="container">
-    <section id="about" class="grid col-2" style="margin-top:28px">
-      <article class="card">
-        <h2>Workshop Description</h2>
-        <p>Artificial intelligence and Digital Twins are reshaping robotics, yet seamless integration across robots, tools, sensors, and automated systems remains difficult. Interoperability suffers from missing standards and brittle, one‑off solutions, slowing adoption in real environments.</p>
-        <p>This workshop spotlights practical integration methods and new directions for AI‑driven automation with Digital Twins. We will share methodologies, case studies, and lessons learned from manufacturing, logistics, construction, and other domains. The program mixes keynotes, paper presentations, startup showcases, a panel, posters, and breakout sessions—creating multiple ways to exchange ideas and define common ground. We place special emphasis on early‑career researchers and startups, highlighting reproducible integration practices.</p>
-      </article>
-      <aside class="card">
-        <h3>Type & Duration</h3>
-        <p>Half‑day workshop (scheduled according to ICRA 2026 program).</p>
-        <h3>Outcomes</h3>
-        <ul class="list-tight">
-          <li>A post‑workshop summary/roadmap</li>
-          <li>Shared best practices & reproducible templates</li>
-          <li>Community around standards & interfaces</li>
+      <!-- Header -->
+      <header id="header">
+        <a href="https://2026.ieee-icra.org/" class="logo" target="_blank" rel="noopener">ICRA 2026</a>
+      </header>
+
+      <!-- Nav (minimal) -->
+      <nav id="nav">
+        <ul class="links">
+          <li class="active"><a href="#intro">Home</a></li>
+          <li><a href="#program">Program</a></li>
+          <li><a href="#speakers">Speakers</a></li>
+          <li><a href="#participate">Participate</a></li>
         </ul>
-      </aside>
-    </section>
+        <ul class="icons"></ul>
+      </nav>
 
-    <section class="grid col-2" style="margin-top:18px">
-      <article class="card">
-        <h2>Detailed Description</h2>
-        <p>Integrati
+      <!-- Main -->
+      <div id="main">
+        <article class="post featured" id="overview">
+          <header class="major">
+            <h2>Overview</h2>
+          </header>
+
+          <!-- First paragraph (will be justified by CSS below) -->
+          <p>
+            Integrating artificial intelligence and Digital Twin technologies into robotic and automated systems
+            remains challenging, particularly in ensuring interoperability and seamless interaction among various
+            components within complex operational environments. Although many individual technologies have matured
+            significantly, standardized integration methodologies and robust interfaces remain underdeveloped,
+            limiting broad industrial adoption and scalability.
+          </p>
+
+          <!-- Following paragraph(s): left-aligned -->
+          <p>
+            This workshop addresses these critical gaps by focusing on AI-driven integration solutions enhanced
+            through Digital Twin technologies, which provide real-time synchronization, accurate simulation, and
+            improved reliability of robotic systems. By gathering experts from academia, industry, and startups,
+            the workshop will discuss practical methodologies, standardization strategies, and successful case
+            studies, emphasizing the importance of overcoming integration barriers to achieve scalable, efficient,
+            and reliable robotic solutions.
+          </p>
+
+          <div class="card" style="margin-top:10px">
+            <strong>Topics of Interest</strong>
+            <ul>
+              <li>AI-driven integration methodologies for robotic and automated systems</li>
+              <li>Practical case studies of robotic system integration in manufacturing, logistics, and construction</li>
+              <li>Standardization and interoperability in robotic integration</li>
+              <li>Reliability and robustness of integrated robotic systems</li>
+              <li>Ethical considerations and societal acceptance of AI-enhanced semi-automatic systems</li>
+              <li>Human-robot interaction and collaboration in automated and semi-automatic contexts</li>
+              <li>Accessibility and inclusivity through AI-enhanced robotics</li>
+              <li>Digital Twin technologies as enablers of robotic system integration</li>
+              <li>Industrial perspectives and experiences in adopting integrated robotic systems</li>
+              <li>Emerging trends and future directions in robotic and automated system integration</li>
+            </ul>
+          </div>
+        </article>
+
+
+
+
+
+        <!-- Program -->
+        <article id="program" class="post">
+          <header class="major"><h2>Program </h2></header>
+          <div class="schedule">
+            <div class="slot"><div class="t">09:00</div><div class="c"><span class="badge">Welcome</span> Welcome & objectives — Organizers</div></div>
+            <div class="slot"><div class="t">09:10</div><div class="c"><span class="badge keynote">Keynote</span> Thrishantha Nanayakkara (Imperial College London)</div></div>
+            <div class="slot"><div class="t">09:40</div><div class="c"><span class="badge keynote">Keynote</span> Darius Burschka (Technical University of Munich)</div></div>
+            <div class="slot"><div class="t">10:10</div><div class="c"><span class="badge posters">Posters</span> Coffee & Posters</div></div>
+            <div class="slot"><div class="t">10:30</div><div class="c"><span class="badge invited">keynote</span> Agostino Marcello Mangini (Politecnico di Bari)</div></div>
+            <div class="slot"><div class="t">10:50</div><div class="c"><span class="badge industry">Industry</span> Viviana Crescitelli (Hitachi, Japan)</div></div>
+            <div class="slot"><div class="t">11:10</div><div class="c"><span class="badge">Lightning</span> Lightning papers (accepted submissions)</div></div>
+            <div class="slot"><div class="t">11:40</div><div class="c"><span class="badge panel">Panel</span> Standards & Interoperability</div></div>
+            <div class="slot"><div class="t">12:20</div><div class="c"><span class="badge">Breakouts</span> Breakouts → Synthesis</div></div>
+            <div class="slot"><div class="t">12:40</div><div class="c"><span class="badge">Wrap‑up</span> Wrap‑up & roadmap</div></div>
+          </div>
+          <p style="color:#6b7280;margin-top:8px"><em>Final times depend on the official ICRA 2026 schedule.</em></p>
+        </article>
+
+        <!-- Speakers (clean 2x2 grid) -->
+        <section id="speakers">
+          <h2>Confirmed Speakers</h2>
+          <div class="people-list">
+            <div class="person">
+              <img src="img/thrish.jpg" alt="Thrishantha Nanayakkara" />
+              <div>
+                <div class="name">Thrishantha Nanayakkara <span class="role">Accademica -Industry</span></div>
+                <div class="affil">Imperial College London, UK</div>
+              </div>
+            </div>
+            <div class="person">
+              <img src="img/darius.jpg" alt="Darius Burschka" />
+              <div>
+                <div class="name">Darius Burschka <span class="role">Accademica</span></div>
+                <div class="affil">Technical University of Munich, Germany</div>
+              </div>
+            </div>
+            <div class="person">
+              <img src="img/agostino.jpg" alt="Agostino Marcello Mangini" />
+              <div>
+                <div class="name">Agostino Marcello Mangini <span class="role">Accademica</span></div>
+                <div class="affil">Politecnico di Bari</div>
+              </div>
+            </div>
+            <div class="person">
+              <img src="img/viviana.jpg" alt="Viviana Crescitelli" />
+              <div>
+                <div class="name">Viviana Crescitelli <span class="role">Industry</span></div>
+                <div class="affil">Hitachi, Japan</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Participate (CFP) -->
+        <article id="participate" class="post">
+          <header class="major"><h2>Participate</h2></header>
+          <p>We invite short papers (2–4 pages) and extended abstracts on practical integration methods, tools, datasets, case studies, and lessons learned. Emphasis on reproducibility.</p>
+          <ul>
+            <li><strong>Format:</strong> PDF, IEEE style (TBA)</li>
+            <li><strong>Important dates:</strong> TBA </li>
+            <li><strong>Review:</strong> single‑blind; ≥2 reviews</li>
+            <li><strong>Presentation:</strong> posters + lightning talks; selected demos</li>
+          </ul>
+        </article>
+
+        <!-- Organizers (minimal, your photo uses anglea.png) -->
+        <article id="organizers" class="post">
+          <header class="major"><h2>Organizers</h2></header>
+          <div class="people-list">
+            <div class="person">
+              <img src="img/angela.png" alt="Angela Faragasso" />
+              <div>
+                <div class="name">Angela Faragasso</div>
+                <div class="affil">Finger Vision, Japan</div>
+              </div>
+            </div>
+            <div class="person">
+              <img src="img/birgit.jpg" alt="Birgit Vogel‑Heuser" />
+              <div>
+                <div class="name">Birgit Vogel‑Heuser</div>
+                <div class="affil">Technical University of Munich, Germany</div>
+              </div>
+            </div>
+            <div class="person">
+              <img src="img/mariapia.jpg" alt="Maria Pia Fanti" />
+              <div>
+                <div class="name">Maria Pia Fanti</div>
+                <div class="affil">Politecnico di Bari, Italy</div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Footer (Acknowledgement only) -->
+      <footer id="footer">
+        <section>
+          <h3>Acknowledgement</h3>
+          <p>Supported by the <a href="https://www.ieee-ras.org/technical-committees" target="_blank" rel="noopener">RAS TC Automation Cluster</a>.</p>
+          <h3>Contact</h3>
+          <p><strong>Angela Faragasso</strong> — <a href="mailto:angela.faragasso@fingervision.biz">angela.faragasso@fingervision.biz</a></p>
+        </section>
+      </footer>
+
+      <!-- Copyright -->
+      <div id="copyright">
+        <ul><li>© ICRA 2026 Workshop</li><li><a href="https://2026.ieee-icra.org/" target="_blank" rel="noopener">ICRA 2026</a></li></ul>
+      </div>
+    </div>
+
+    <!-- Scripts (Massively) -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/skel.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
