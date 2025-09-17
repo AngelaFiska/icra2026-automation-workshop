@@ -60,8 +60,12 @@
   <header>
     <div class="container">
       <nav>
-        <div class="brand">ICRA 2026 Workshop
-          <small>AI‑Driven Automation & Digital Twins</small>
+        <div class="brand">
+          <img src="/img/logos/icra-2026.svg" alt="ICRA 2026" style="height:28px;width:auto;display:block" onerror="this.style.display='none'">
+          <div>
+            <div>ICRA 2026 Workshop</div>
+            <span class="sub">AI‑Driven Automation & Digital Twins</span>
+          </div>
         </div>
         <div class="navlinks">
           <a href="#about">About</a>
@@ -75,7 +79,7 @@
     </div>
   </header>
 
-  <section class="hero">
+  <section class="hero" style="position:relative">
     <div class="container two">
       <div>
         <h1>Advances & Challenges in AI‑Driven Automation and Robotic System Integration with Digital Twins</h1>
@@ -97,17 +101,39 @@
           <a class="btn ghost" href="#contact" style="margin-left:8px">Contact organizers</a>
         </p>
       </div>
-      <aside class="card">
+      <aside class="card" style="background:var(--panel2)">
         <h3>Organizers</h3>
-        <p class="muted">Corresponding organizer in bold.</p>
-        <ul class="list-tight">
-          <li><strong>Angela Faragasso</strong> — Finger Vision, Japan<br><a href="mailto:angela.faragasso@fingervision.biz">angela.faragasso@fingervision.biz</a></li>
-          <li>Birgit Vogel‑Heuser — Technical University of Munich, Germany<br><a href="mailto:vogel-heuser@tum.de">vogel-heuser@tum.de</a></li>
-          <li>Maria Pia Fanti — Politecnico di Bari, Italy<br><a href="mailto:mariapia.fanti@poliba.it">mariapia.fanti@poliba.it</a></li>
-        </ul>
+        <p class="muted" style="margin-top:-6px">Corresponding organizer in bold.</p>
+        <div class="grid" style="grid-template-columns:repeat(1, minmax(0,1fr)); gap:12px">
+          <div class="speaker" style="grid-template-columns:56px 1fr">
+            <img src="/img/organizers/angela.jpg" alt="Angela Faragasso" onerror="this.src='/img/speakers/placeholder.jpg'" />
+            <div>
+              <strong>Angela Faragasso</strong><br>
+              <span class="muted">Finger Vision, Japan</span><br>
+              <a href="mailto:angela.faragasso@fingervision.biz">✉ angela.faragasso@fingervision.biz</a>
+            </div>
+          </div>
+          <div class="speaker" style="grid-template-columns:56px 1fr">
+            <img src="/img/organizers/birgit.jpg" alt="Birgit Vogel‑Heuser" onerror="this.src='/img/speakers/placeholder.jpg'" />
+            <div>
+              Birgit Vogel‑Heuser<br>
+              <span class="muted">Technical University of Munich, Germany</span><br>
+              <a href="mailto:vogel-heuser@tum.de">✉ vogel-heuser@tum.de</a>
+            </div>
+          </div>
+          <div class="speaker" style="grid-template-columns:56px 1fr">
+            <img src="/img/organizers/fanti.jpg" alt="Maria Pia Fanti" onerror="this.src='/img/speakers/placeholder.jpg'" />
+            <div>
+              Maria Pia Fanti<br>
+              <span class="muted">Politecnico di Bari, Italy</span><br>
+              <a href="mailto:mariapia.fanti@poliba.it">✉ mariapia.fanti@poliba.it</a>
+            </div>
+          </div>
+        </div>
         <p class="muted" style="margin-top:8px">Website: <span class="mono">TBD</span></p>
       </aside>
     </div>
+    <img src="/img/logos/ieee-ras.svg" alt="IEEE RAS" style="position:absolute; right:20px; bottom:10px; height:30px; opacity:.6" onerror="this.style.display='none'">
   </section>
 
   <main class="container">
@@ -132,119 +158,4 @@
     <section class="grid col-2" style="margin-top:18px">
       <article class="card">
         <h2>Detailed Description</h2>
-        <p>Integrating AI and Digital Twins into robotic and automated systems is challenging—especially when heterogeneous components must coordinate in dynamic, safety‑critical environments. While individual technologies have matured, robust integration methodologies and standardized interfaces are still evolving, constraining scalability and industrial uptake.</p>
-        <p>This workshop addresses these gaps by focusing on AI‑driven solutions enhanced by Digital Twins for real‑time synchronization, simulation, and verification. By convening experts from academia, industry, and startups, we will surface practical methods, standardization strategies, and successful case studies. The goal is to accelerate interoperable, reliable, and scalable deployments.</p>
-      </article>
-      <article class="card">
-        <h2>Objectives</h2>
-        <ul>
-          <li>Map the key integration challenges and risks.</li>
-          <li>Share Digital‑Twin‑enabled methods and tools.</li>
-          <li>Promote common interfaces, standards, and metrics.</li>
-          <li>Showcase reproducible pipelines and benchmarks.</li>
-          <li>Bridge lab‑to‑factory with concrete case studies.</li>
-          <li>Advance human‑in‑the‑loop, semi‑automatic systems.</li>
-          <li>Highlight early‑career researchers and startups.</li>
-          <li>Publish a succinct post‑workshop roadmap.</li>
-        </ul>
-      </article>
-    </section>
-
-    <section id="topics" class="card" style="margin-top:18px">
-      <h2>Topics of Interest</h2>
-      <ul>
-        <li>AI‑driven integration methodologies for robotic and automated systems</li>
-        <li>Case studies in manufacturing, logistics, construction, and field robotics</li>
-        <li>Standards, interfaces, and interoperability across platforms</li>
-        <li>Reliability, robustness, and verification of integrated systems</li>
-        <li>Ethics and societal acceptance of AI‑enhanced semi‑automatic systems</li>
-        <li>Human–robot interaction and collaboration</li>
-        <li>Accessibility and inclusivity via AI‑enhanced robotics</li>
-        <li>Digital Twin technologies as integration enablers</li>
-        <li>Industrial adoption experiences and lessons learned</li>
-        <li>Emerging trends and future directions</li>
-      </ul>
-    </section>
-
-    <section id="speakers" class="card" style="margin-top:18px">
-      <h2>Confirmed Speakers</h2>
-      <p class="muted">Add headshots to <span class="mono">/img/speakers/</span> and duplicate a card per speaker.</p>
-      <div class="grid col-3">
-        <!-- Speaker card template: duplicate <article> and edit fields -->
-        <article class="speaker card" style="box-shadow:none">
-          <img src="/img/speakers/placeholder.jpg" alt="Speaker headshot" />
-          <div>
-            <strong>Speaker Name</strong><br>
-            <span class="muted">Affiliation, Country</span>
-            <div class="tag" style="margin-top:6px">Keynote</div>
-          </div>
-        </article>
-        <article class="speaker card" style="box-shadow:none">
-          <img src="/img/speakers/placeholder.jpg" alt="Speaker headshot" />
-          <div>
-            <strong>Speaker Name</strong><br>
-            <span class="muted">Affiliation, Country</span>
-            <div class="tag" style="margin-top:6px">Industry</div>
-          </div>
-        </article>
-        <article class="speaker card" style="box-shadow:none">
-          <img src="/img/speakers/placeholder.jpg" alt="Speaker headshot" />
-          <div>
-            <strong>Speaker Name</strong><br>
-            <span class="muted">Affiliation, Country</span>
-            <div class="tag" style="margin-top:6px">Research</div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section id="program" class="card" style="margin-top:18px">
-      <h2>Program (Draft)</h2>
-      <p class="muted">Final times depend on ICRA scheduling. Replace with the official slot when assigned.</p>
-      <ul class="list-tight">
-        <li>Welcome & objectives</li>
-        <li>Keynote 1</li>
-        <li>Keynote 2</li>
-        <li>Paper session</li>
-        <li>Startup showcase</li>
-        <li>Panel: Standards & Interoperability</li>
-        <li>Posters & breakouts</li>
-        <li>Wrap‑up & roadmap</li>
-      </ul>
-    </section>
-
-    <section id="cfp" class="grid col-2" style="margin-top:18px">
-      <article class="card">
-        <h2>Call for Participation</h2>
-        <p>We invite short papers (2–4 pages) and extended abstracts describing practical integration methods, tools, datasets, and case studies. Submissions should emphasize reproducibility and lessons learned.</p>
-        <ul class="list-tight">
-          <li><strong>Format:</strong> PDF, IEEE style (TBA)</li>
-          <li><strong>Submission site:</strong> TBA</li>
-          <li><strong>Important dates:</strong> TBA (explicit JST and AoE)</li>
-          <li><strong>Review:</strong> single‑blind; at least two reviews per paper</li>
-          <li><strong>Presentation:</strong> posters + lightning talks; selected demos</li>
-        </ul>
-        <p><a class="btn" href="#">Download CFP (PDF)</a></p>
-      </article>
-      <aside class="card">
-        <h3>Code of Conduct</h3>
-        <p class="muted">We follow IEEE & ICRA policies. A respectful, inclusive environment is mandatory. Details TBA.</p>
-        <h3>Accessibility</h3>
-        <p class="muted">Please let us know any accessibility needs—venue and materials will be prepared accordingly.</p>
-      </aside>
-    </section>
-
-    <section id="contact" class="card" style="margin-top:18px">
-      <h2>Contact</h2>
-      <p>Primary contact: <strong>Angela Faragasso</strong> (<a href="mailto:angela.faragasso@fingervision.biz">angela.faragasso@fingervision.biz</a>)</p>
-      <p>General inquiries: <a href="mailto:workshop.icra2026.automation@gmail.com">workshop.icra2026.automation@gmail.com</a> (placeholder)</p>
-    </section>
-
-    <section class="footer">
-      <div class="container">
-        <p class="muted">© ICRA 2026 Workshop: AI‑Driven Automation & Digital Twins. Content licensed CC BY 4.0 unless noted. Last updated <span class="mono">TBD</span>.</p>
-      </div>
-    </section>
-  </main>
-</body>
-</html>
+        <p>Integrati
