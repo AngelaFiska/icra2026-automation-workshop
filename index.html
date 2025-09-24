@@ -89,6 +89,11 @@
       .slot:first-child{border-top:0}
       .slot .t{padding:9px 10px; font-weight:700; color:#0b3a75; background:#f7f9fc; white-space:nowrap}
       .slot .c{padding:9px 10px}
+      /* Program readability */
+      .slot .c .talk-title{display:block;font-weight:700;letter-spacing:.2px}
+      .slot .c .talk-meta{display:block;font-size:12.5px;color:#5b6675;margin-top:2px}
+      .slot .c em{font-style:italic}
+
       .badge{display:inline-block; padding:2px 8px; border-radius:999px; font-size:11.5px; margin-right:6px; border:1px solid #d8e7ff; background:#f3f8ff; color:#0b3a75}
       .badge.keynote{border-color:#f8cfe1; background:#fff4f8; color:#8b1345}
       .badge.invited{border-color:#f6e3a1; background:#fffae9; color:#7a4b00}
@@ -97,6 +102,36 @@
       .badge.posters{border-color:#e7eaee; background:#fbfcfd; color:#374151}
 
       /* People — media cards with consistent image column and rhythm */
+            /* Bigger headshots + stacked meta lines */
+      .people-grid{
+        display:grid; gap:16px;
+        grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      }
+      .speaker-card{
+        display:flex; gap:14px; align-items:center;
+        border:1px solid var(--line); border-radius:var(--r);
+        padding:14px; background:#fff;
+      }
+      .speaker-card img{
+        width:120px; height:120px;      /* ⬅︎ bigger image */
+        object-fit:cover; border-radius:12px; flex:0 0 120px;
+      }
+      .speaker-card .name{font-weight:700; margin:0}
+      .speaker-card .role,
+      .speaker-card .affil{
+        display:block;                   /* ⬅︎ new line for role + affiliation */
+        margin-top:4px;
+      }
+      .speaker-card .role{
+        font-size:12.5px; color:#0b3a75;
+        border:1px solid #cfe2ff; background:#eff6ff;
+        display:inline-block; padding:2px 8px; border-radius:999px;
+      }
+      .speaker-card .affil{font-size:13.5px; color:var(--muted)}
+      @media (max-width:560px){
+        .speaker-card{flex-direction:column; text-align:center}
+      }
+
       .people-list{display:grid; gap:var(--space-2)}
       .person{display:grid; grid-template-columns:120px 1fr; gap:var(--space-2); align-items:center; border:1px solid var(--line); border-radius:var(--r); background:#fff; padding:var(--space-2)}
       .person img{width:120px; height:120px; object-fit:cover; border-radius:10px}
@@ -108,6 +143,30 @@
         .person img{justify-self:center}
         .person .role{margin-left:0}
       }
+      .program-table{
+      width:100%; border-collapse:separate; border-spacing:0; overflow:hidden;
+      border:1px solid var(--line); border-radius:var(--r); background:#fff;
+      font-size:14.5px;
+    }
+    .program-table th, .program-table td{ padding:10px 12px; vertical-align:top; }
+    .program-table thead th{
+      background:#f7f9fc; color:#0b3a75; text-align:left; font-weight:700; border-bottom:1px solid var(--line);
+    }
+    .program-table tbody tr:not(.section)+tr td{ border-top:1px solid var(--line); }
+    .program-table .section td{
+      background:#fbfcff; color:#2e36a3; font-weight:700; border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    }
+    .program-table .muted{ color:#5b6675; }
+    @media (max-width:760px){
+      .program-table thead{ display:none; }
+      .program-table, .program-table tbody, .program-table tr, .program-table td{ display:block; width:100%; }
+      .program-table tr{ border-top:1px solid var(--line); padding:8px 0; }
+      .program-table td{ padding:6px 12px; }
+      .program-table td::before{
+        content:attr(data-label); display:block; font-size:12px; color:#5b6675; text-transform:uppercase; letter-spacing:.04em; margin-bottom:2px;
+      }
+    }
+
 
       /* Footer */
       #footer{border-top:1px solid var(--line)}
@@ -123,8 +182,8 @@
         <div class="inner">
           <span class="kicker">ICRA 2026 Workshop · Vienna</span>
           <h1>AI‑Driven Automation & Robotic System Integration with Digital Twins</h1>
-          <p>Half‑day workshop at <a href="https://2026.ieee-icra.org/" target="_blank" rel="noopener"><strong>IEEE ICRA 2026</strong></a>. Date TBA according to the official schedule.</p>
-          <ul class="actions">
+          <p>Half-day workshop at <a href="https://2026.ieee-icra.org/" target="_blank" rel="noopener"><strong>IEEE ICRA 2026</strong></a>. Date TBA (June 1 or 5, 2026).</p>
+            <ul class="actions">
             <li><a href="#header" class="button icon solo fa-arrow-down scrolly">Continue</a></li>
           </ul>
         </div>
@@ -195,68 +254,189 @@
 
         <!-- Program -->
         <article id="program" class="post">
-          <header class="major"><h2>Program </h2></header>
-          <div class="schedule">
-            <div class="slot"><div class="t">09:00</div><div class="c"><span class="badge">Welcome</span> Welcome & objectives — Organizers</div></div>
-            <div class="slot"><div class="t">09:10</div><div class="c"><span class="badge keynote">Keynote</span> Thrishantha Nanayakkara (Imperial College London)</div></div>
-            <div class="slot"><div class="t">09:40</div><div class="c"><span class="badge keynote">Keynote</span> Darius Burschka (Technical University of Munich)</div></div>
-            <div class="slot"><div class="t">10:10</div><div class="c"><span class="badge posters">Posters</span> Coffee & Posters</div></div>
-            <div class="slot"><div class="t">10:30</div><div class="c"><span class="badge invited">keynote</span> Agostino Marcello Mangini (Politecnico di Bari)</div></div>
-            <div class="slot"><div class="t">10:50</div><div class="c"><span class="badge industry">Industry</span> Viviana Crescitelli (Hitachi, Japan)</div></div>
-            <div class="slot"><div class="t">11:10</div><div class="c"><span class="badge">Lightning</span> Lightning papers (accepted submissions)</div></div>
-            <div class="slot"><div class="t">11:40</div><div class="c"><span class="badge panel">Panel</span> Standards & Interoperability</div></div>
-            <div class="slot"><div class="t">12:20</div><div class="c"><span class="badge">Breakouts</span> Breakouts → Synthesis</div></div>
-            <div class="slot"><div class="t">12:40</div><div class="c"><span class="badge">Wrap‑up</span> Wrap‑up & roadmap</div></div>
-          </div>
-          <p style="color:#6b7280;margin-top:8px"><em>Final times depend on the official ICRA 2026 schedule.</em></p>
-        </article>
+    <header class="major"><h2>Program</h2></header>
+
+    <table class="program-table">
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>Format </th>
+          <th>Speaker</th>
+          <th>Title</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>08:30–08:40</td>
+          <td>Opening &amp; Welcome</td>
+          <td>Organizers</td>
+          <td>Digital-Twin–enabled integration: scope &amp; goals</td>
+        </tr>
+
+        <!-- SESSION I -->
+        <tr class="section"><td colspan="4">SESSION I: Methods &amp; Architectures</td></tr>
+        <tr>
+          <td>08:40–09:05</td>
+          <td>Research Talk I</td>
+          <td>Thrishantha Nanayakkara</td>
+          <td>Situated Heuristics-Based Evolution of Mechanically Intelligent Systems (SHAPE)</td>
+        </tr>
+        <tr>
+          <td>09:05–09:30</td>
+          <td>Research Talk II</td>
+          <td>Darius Burschka</td>
+          <td>Vision-Based Parametrization of the Digital Twin in Dynamic Environments through Analysis of Action Constraints</td>
+        </tr>
+        <tr>
+          <td>09:30–09:45</td>
+          <td>Lightning Papers</td>
+          <td>Contributors</td>
+          <td>Authors of accepted submissions — 3 × 5 min</td>
+        </tr>
+        <tr>
+          <td>09:45–10:15</td>
+          <td>Coffee &amp; Posters</td>
+          <td>—</td>
+          <td>Poster session and networking</td>
+        </tr>
+
+        <!-- SESSION II -->
+        <tr class="section"><td colspan="4">SESSION II: Validation &amp; Deployment</td></tr>
+        <tr>
+          <td>10:15–10:40</td>
+          <td>Research Talk III</td>
+          <td>Agostino Marcello Mangini</td>
+          <td>A Digital Twin Approach for a New Concept of Last-Mile Delivery</td>
+        </tr>
+        <tr>
+          <td>10:40–11:05</td>
+          <td>Research Talk IV</td>
+          <td>Jing Xiao</td>
+          <td>Dynamic Dense Packing of Novel Objects</td>
+        </tr>
+
+        <!-- SESSION III -->
+        <tr class="section"><td colspan="4">SESSION III: Applied Perspectives</td></tr>
+        <tr>
+          <td>11:05–11:15</td>
+          <td>Industry Talk I</td>
+          <td>Viviana Crescitelli</td>
+          <td>Generative AI for Industries</td>
+        </tr>
+        <tr>
+          <td>11:15–11:25</td>
+          <td>Industry Talk II</td>
+          <td>Felix Ocker</td>
+          <td>Title TBC <span class="muted">(pending company approval)</span></td>
+        </tr>
+        <tr>
+          <td>11:25–11:35</td>
+          <td>Startup Spotlight</td>
+          <td>Startup teams (selected)</td>
+          <td>2 × 5 min short talks — TBC</td>
+        </tr>
+
+        <!-- SESSION IV -->
+        <tr class="section"><td colspan="4">SESSION IV: Takeaways &amp; Closing</td></tr>
+        <tr>
+          <td>11:35–12:05</td>
+          <td>Panel</td>
+          <td>Speakers + organizers</td>
+          <td>Standards, synchronization/verification, adoption</td>
+        </tr>
+        <tr>
+          <td>12:05–12:20</td>
+          <td>Open Discussion</td>
+          <td>—</td>
+          <td>Audience questions with all speakers</td>
+        </tr>
+        <tr>
+          <td>12:20–12:30</td>
+          <td>Closing</td>
+          <td>—</td>
+          <td>Closing remarks</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="muted" style="margin-top:8px"><em>Final times depend on the official ICRA 2026 schedule.</em></p>
+  </article>
 
         <!-- Speakers (clean 2x2 grid) -->
         <section id="speakers">
-          <h2>Confirmed Speakers</h2>
-          <div class="people-list">
-            <div class="person">
-              <img src="img/thrish.jpg" alt="Thrishantha Nanayakkara" />
-              <div>
-                <div class="name">Thrishantha Nanayakkara <span class="role">Accademica -Industry</span></div>
-                <div class="affil">Imperial College London, UK</div>
+          <h2>Speakers</h2>
+            <div class="people-grid">
+              <div class="speaker-card">
+                <img src="img/thrish.jpg" alt="Thrishantha Nanayakkara">
+                <div>
+                  <div class="name">Thrishantha Nanayakkara <span class="role">Academic</span></div>
+                  <div class="affil">Director, Morphlab — Dyson School of Design Engineering, Imperial College London (UK)</div>
+                </div>
+              </div>
+
+              <div class="speaker-card">
+                <img src="img/darius.jpg" alt="Darius Burschka">
+                <div>
+                  <div class="name">Darius Burschka <span class="role">Academic</span></div>
+                  <div class="affil">Head, Machine Vision &amp; Perception Group — Technical University of Munich (Germany)</div>
+                </div>
+              </div>
+
+              <div class="speaker-card">
+                <img src="img/agostino.jpg" alt="Agostino Marcello Mangini">
+                <div>
+                  <div class="name">Agostino Marcello Mangini <span class="role">Academic</span></div>
+                  <div class="affil">Dept. of Electrical &amp; Information Engineering — Politecnico di Bari (Italy)</div>
+                </div>
+              </div>
+
+              <div class="speaker-card">
+                <img src="img/jing.jpg" alt="Jing Xiao">
+                <div>
+                  <div class="name">Jing Xiao <span class="role">Academic</span></div>
+                  <div class="affil">Head, Dept. of Robotics Engineering; Director, AIR Lab — Worcester Polytechnic Institute (USA)</div>
+                </div>
+              </div>
+
+              <div class="speaker-card">
+                <img src="img/viviana.jpg" alt="Viviana Crescitelli">
+                <div>
+                  <div class="name">Viviana Crescitelli <span class="role">Industry</span></div>
+                  <div class="affil">Senior Researcher; Hitachi AI Ambassador — Hitachi, Ltd. (Japan)</div>
+                </div>
+              </div>
+
+              <div class="speaker-card">
+                <img src="img/felix.jpg" alt="Felix Ocker">
+                <div>
+                  <div class="name">Felix Ocker <span class="role">Industry</span></div>
+                  <div class="affil">Senior Scientist — Honda Research Institute (Germany)</div>
+                </div>
               </div>
             </div>
-            <div class="person">
-              <img src="img/darius.jpg" alt="Darius Burschka" />
-              <div>
-                <div class="name">Darius Burschka <span class="role">Accademica</span></div>
-                <div class="affil">Technical University of Munich, Germany</div>
-              </div>
-            </div>
-            <div class="person">
-              <img src="img/agostino.jpg" alt="Agostino Marcello Mangini" />
-              <div>
-                <div class="name">Agostino Marcello Mangini <span class="role">Accademica</span></div>
-                <div class="affil">Politecnico di Bari</div>
-              </div>
-            </div>
-            <div class="person">
-              <img src="img/viviana.jpg" alt="Viviana Crescitelli" />
-              <div>
-                <div class="name">Viviana Crescitelli <span class="role">Industry</span></div>
-                <div class="affil">Hitachi, Japan</div>
-              </div>
-            </div>
-          </div>
+
+
         </section>
 
         <!-- Participate (CFP) -->
         <article id="participate" class="post">
-          <header class="major"><h2>Participate</h2></header>
-          <p>We invite short papers (2–4 pages) and extended abstracts on practical integration methods, tools, datasets, case studies, and lessons learned. Emphasis on reproducibility.</p>
-          <ul>
-            <li><strong>Format:</strong> PDF, IEEE style (TBA)</li>
-            <li><strong>Important dates:</strong> TBA </li>
-            <li><strong>Review:</strong> single‑blind; ≥2 reviews</li>
-            <li><strong>Presentation:</strong> posters + lightning talks; selected demos</li>
-          </ul>
-        </article>
+      <header class="major"><h2>Participate</h2></header>
+      <p>
+        We invite short papers (2–4 pages) and extended abstracts (1–2 pages) on Digital-Twin–enabled integration
+        for robotics—methods, tools, datasets, and case studies (interoperability, synchronization,
+        simulation/verification, deployment experience). Submissions are single-blind,
+        prior work may be referenced, but submissions should emphasize new ideas and perspectives. Accepted work will
+        be presented as 5-minute lightning talks and posters. Format: PDF, IEEE style.
+      </p>
+      <ul>
+        <li><strong>Format:</strong> PDF, IEEE style</li>
+        <li><strong>Important dates:</strong> TBA</li>
+        <li><strong>Review:</strong> single-blind</li>
+        <li><strong>Presentation:</strong> posters + lightning talks; selected demos</li>
+      </ul>
+    </article>
+
+
 
         <!-- Organizers (minimal, your photo uses anglea.png) -->
         <article id="organizers" class="post">
